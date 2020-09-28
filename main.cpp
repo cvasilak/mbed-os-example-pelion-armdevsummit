@@ -25,6 +25,7 @@
 #include "DeviceKey.h"
 #include "kv_config.h"
 #include "mbed-trace/mbed_trace.h"             // Required for mbed_trace_*
+#include "cypress_capsense.h"
 
 #if defined(ENABLE_CY_FACTORY_FLOW)
     extern "C" fcc_status_e cy_factory_flow(void);
@@ -222,6 +223,10 @@ int main(void)
         return -1;
     }
 #endif // ENABLE_CY_FACTORY_FLOW
+
+printf("Initializing Capacitive Touch Sensors\n");
+
+//capsense_main();
 
 #ifdef MBED_CLOUD_CLIENT_SUPPORT_UPDATE
     cloud_client = new MbedCloudClient(client_registered, client_unregistered, client_error, NULL, update_progress);
